@@ -1,4 +1,6 @@
 import './index.css'
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css'
 import {BiSun, BiListPlus} from 'react-icons/bi'
 import Cookies from 'js-cookie'
 import {Link, withRouter} from 'react-router-dom'
@@ -57,13 +59,41 @@ const Header = props => {
                   <GiHamburgerMenu className={`${headerThemeClass} icons`} />
                 </button>
 
-                <button
-                  onClick={onClickLogout}
-                  type="button"
-                  className="logout_button"
-                >
-                  <FiLogOut className={`${headerThemeClass} icons`} />
-                </button>
+                <div className="popup-container">
+                  <Popup
+                    modal
+                    trigger={
+                      <button type="button" className="logout_button">
+                        <FiLogOut className={`${headerThemeClass} icons`} />
+                      </button>
+                    }
+                  >
+                    {close => (
+                      <>
+                        <div>
+                          <p>Are you sure you want to logout ?</p>
+                        </div>
+                        <div className="pop-up-button_div">
+                          <button
+                            type="button"
+                            className="cancel-button"
+                            onClick={() => close()}
+                          >
+                            Cancel
+                          </button>
+
+                          <button
+                            type="button"
+                            className="logout-button"
+                            onClick={onClickLogout}
+                          >
+                            Logout
+                          </button>
+                        </div>
+                      </>
+                    )}
+                  </Popup>
+                </div>
               </div>
             </div>
             {isOpen && (

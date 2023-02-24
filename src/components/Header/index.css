@@ -16,6 +16,46 @@
   color: #f1f5f9;
 }
 
+.popup-content {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 350px;
+}
+.popup-content p {
+  padding: 10px;
+  color: #475569;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.pop-up-button_div {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding-bottom: 20px;
+}
+
+.cancel-button {
+  background-color: transparent;
+  border: 1px solid #475569;
+  border-radius: 5px;
+  height: 36px;
+  width: 100px;
+  color: #94a3b8;
+}
+.logout-button {
+  background-color: #3b82f6;
+  border-style: none;
+  border-radius: 5px;
+  height: 36px;
+  width: 100px;
+  color: white;
+  font-weight: 500;
+}
+
 @media screen and (max-width: 767px) {
   .mobile_container {
     display: flex;
