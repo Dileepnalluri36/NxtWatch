@@ -2,6 +2,7 @@ import {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import './index.css'
+import ThemeContext from '../context/ThemeContext'
 
 class LoginForm extends Component {
   state = {
@@ -98,35 +99,57 @@ class LoginForm extends Component {
   render() {
     const {showSubmitError, errorMsg} = this.state
     const jwtToken = Cookies.get('jwt_token')
-    // if (jwtToken !== undefined) {
-    //   return <Redirect to="/" />
-    // }
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
 
     return (
-      <div className="login-container">
-        <form className="form-container" onSubmit={this.submitForm}>
-          <img
-            src="https://res.cloudinary.com/dziwdneks/image/upload/v1675419223/login_icon_ekrs85.png"
-            className="login-website-logo-image"
-            alt="website logo"
-          />
-          <div className="input-container">{this.renderUsernameField()}</div>
-          <div className="input-container">{this.renderPasswordField()}</div>
-          <div className="showPasswordContainer">
-            <input
-              onClick={this.showPassword}
-              className="showPasswordInput"
-              id="showPassword"
-              type="checkbox"
-            />
-            <label htmlFor="showPassword">Show Password</label>
-          </div>
-          <button type="submit" className="login-button">
-            Login
-          </button>
-          {showSubmitError && <p className="error-message">*{errorMsg}</p>}
-        </form>
-      </div>
+      <ThemeContext.Consumer>
+        {value => {
+          const {isLight} = value
+          const logoUrl = isLight
+            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
+            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
+
+          const containerStyles = isLight ? 'containerLight' : 'containerDark'
+          const formContainerStyles = isLight ? 'formLight' : 'formDark'
+          return (
+            <div className={`login-container ${containerStyles}`}>
+              <form
+                className={`form-container ${formContainerStyles}`}
+                onSubmit={this.submitForm}
+              >
+                <img
+                  src={logoUrl}
+                  className="login-website-logo-image"
+                  alt="website logo"
+                />
+                <div className="input-container">
+                  {this.renderUsernameField()}
+                </div>
+                <div className="input-container">
+                  {this.renderPasswordField()}
+                </div>
+                <div className={`showPasswordContainer ${formContainerStyles}`}>
+                  <input
+                    onClick={this.showPassword}
+                    className="showPasswordInput"
+                    id="showPassword"
+                    type="checkbox"
+                  />
+                  <label htmlFor="showPassword">Show Password</label>
+                </div>
+                <button type="submit" className="login-button">
+                  Login
+                </button>
+                {showSubmitError && (
+                  <p className="error-message">*{errorMsg}</p>
+                )}
+              </form>
+            </div>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 }

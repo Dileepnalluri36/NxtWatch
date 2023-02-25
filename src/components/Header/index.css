@@ -16,6 +16,16 @@
   color: #f1f5f9;
 }
 
+.logoutLight {
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+}
+
+.logoutDark {
+  color: #fff;
+  border: 1px solid #fff;
+}
+
 .popup-content {
   border-radius: 10px;
   display: flex;
@@ -29,6 +39,7 @@
   font-family: Roboto;
   font-size: 20px;
   font-weight: 500;
+  text-align: center;
 }
 
 .pop-up-button_div {
@@ -56,6 +67,65 @@
   font-weight: 500;
 }
 
+@media screen and (min-width: 767px) {
+  .mobile_container {
+    display: none;
+  }
+
+  .menu_bar {
+    display: none;
+  }
+
+  .desktop_container {
+    font-family: Roboto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logoImg {
+    height: 30px;
+    width: 150px;
+  }
+
+  .links_mobile_bar {
+    display: flex;
+    gap: 40px;
+  }
+
+  .hamburgerIcon {
+    background-color: transparent;
+    border-style: none;
+  }
+
+  .icons {
+    height: 25px;
+    width: 25px;
+  }
+
+  .profile_img {
+    height: 35px;
+    width: 35px;
+  }
+
+  .logout_button {
+    height: 36px;
+    width: 120px;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: Roboto;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .links_mobile_bar {
+    display: flex;
+    gap: 70px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .mobile_container {
     display: flex;
@@ -63,12 +133,16 @@
     padding: 20px 20px 10px 20px;
     align-items: center;
   }
+  .desktop_container {
+    display: none;
+  }
 
   .logoImg {
     height: 30px;
     width: 150px;
   }
   .links_mobile_bar {
+    font-family: Roboto;
     display: flex;
     gap: 30px;
     width: 120px;
@@ -105,13 +179,15 @@
     width: 20px;
   }
 
-  .active-link p {
-    color: white;
+  .active-link {
+    color: #ff0b37;
+    text-decoration: none;
     font-weight: 500;
   }
 
-  .active-link {
-    color: #ff0b37;
+  .link_item {
+    text-decoration: none;
+    color: inherit;
   }
 
   .logout_button {

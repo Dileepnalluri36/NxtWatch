@@ -32,6 +32,7 @@ const Header = props => {
           : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
         const headerThemeClass = isLight ? 'headerLight' : 'headerDark'
         const linksThemeClass = isLight ? 'linksLight' : 'linksDark'
+        const logoutThemeClass = isLight ? 'logoutLight' : 'logoutDark'
 
         return (
           <div className={`header_container ${headerThemeClass}`}>
@@ -98,36 +99,135 @@ const Header = props => {
             </div>
             {isOpen && (
               <ul className={`menu_bar ${linksThemeClass}`}>
-                <li
-                  className={activeMenu === 'Home' ? 'active-link' : ''}
+                <Link
+                  to="/"
+                  className={`link_item ${
+                    activeMenu === 'Home' ? 'active-link' : ''
+                  }`}
                   onClick={() => setActiveMenu('Home')}
                 >
-                  <AiFillHome className="linkIcons" />
-                  <p>Home</p>
-                </li>
-                <li
-                  className={activeMenu === 'Trending' ? 'active-link' : ''}
+                  <li>
+                    <AiFillHome
+                      className={`linkIcons ${
+                        activeMenu === 'Home' ? 'active-link' : ''
+                      }`}
+                    />
+                    <p className={linksThemeClass}>Home</p>
+                  </li>
+                </Link>
+                <Link
+                  to="/"
+                  className={`link_item ${
+                    activeMenu === 'Trending' ? 'active-link' : ''
+                  }`}
                   onClick={() => setActiveMenu('Trending')}
                 >
-                  <AiFillFire className="linkIcons" />
-                  <p>Trending</p>
-                </li>
-                <li
-                  className={activeMenu === 'Gaming' ? 'active-link' : ''}
+                  <li>
+                    <AiFillFire
+                      className={`linkIcons ${
+                        activeMenu === 'Trending' ? 'active-link' : ''
+                      }`}
+                    />
+                    <p className={linksThemeClass}>Trending</p>
+                  </li>
+                </Link>
+                <Link
+                  to="/"
+                  className={`link_item ${
+                    activeMenu === 'Gaming' ? 'active-link' : ''
+                  }`}
                   onClick={() => setActiveMenu('Gaming')}
                 >
-                  <SiYoutubegaming className="linkIcons" />
-                  <p>Gaming</p>
-                </li>
-                <li
-                  className={activeMenu === 'Saved' ? 'active-link' : ''}
+                  <li>
+                    <SiYoutubegaming
+                      className={`linkIcons ${
+                        activeMenu === 'Gaming' ? 'active-link' : ''
+                      }`}
+                    />
+                    <p className={linksThemeClass}>Gaming</p>
+                  </li>
+                </Link>
+                <Link
+                  to="/"
+                  className={`link_item ${
+                    activeMenu === 'Saved' ? 'active-link' : ''
+                  }`}
                   onClick={() => setActiveMenu('Saved')}
                 >
-                  <BiListPlus className="linkIcons" />
-                  <p>Saved Videos</p>
-                </li>
+                  <li>
+                    <BiListPlus
+                      className={`linkIcons ${
+                        activeMenu === 'Saved' ? 'active-link' : ''
+                      }`}
+                    />
+                    <p className={linksThemeClass}>Saved Videos</p>
+                  </li>
+                </Link>
               </ul>
             )}
+
+            <div className="desktop_container">
+              <img className="logoImg" src={logoUrl} alt="logoImg" />
+
+              <div className="links_mobile_bar">
+                <button
+                  onClick={changeTheme}
+                  className="hamburgerIcon"
+                  type="button"
+                >
+                  {isLight ? (
+                    <FaMoon className={`${headerThemeClass} icons`} />
+                  ) : (
+                    <BiSun className={`${headerThemeClass} icons`} />
+                  )}
+                </button>
+                <button className="hamburgerIcon" type="button">
+                  <img
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+                    alt="profile"
+                    className="profile_img"
+                  />
+                </button>
+                <div className="popup-container">
+                  <Popup
+                    modal
+                    trigger={
+                      <button
+                        type="button"
+                        className={`logout_button ${logoutThemeClass}`}
+                      >
+                        Logout
+                      </button>
+                    }
+                  >
+                    {close => (
+                      <>
+                        <div>
+                          <p>Are you sure you want to logout ?</p>
+                        </div>
+                        <div className="pop-up-button_div">
+                          <button
+                            type="button"
+                            className="cancel-button"
+                            onClick={() => close()}
+                          >
+                            Cancel
+                          </button>
+
+                          <button
+                            type="button"
+                            className="logout-button"
+                            onClick={onClickLogout}
+                          >
+                            Logout
+                          </button>
+                        </div>
+                      </>
+                    )}
+                  </Popup>
+                </div>
+              </div>
+            </div>
           </div>
         )
       }}
