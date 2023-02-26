@@ -33,6 +33,9 @@ const Header = props => {
         const headerThemeClass = isLight ? 'headerLight' : 'headerDark'
         const linksThemeClass = isLight ? 'linksLight' : 'linksDark'
         const logoutThemeClass = isLight ? 'logoutLight' : 'logoutDark'
+        const DesktoplinksThemeClass = isLight
+          ? 'desktopThemeLight'
+          : 'desktopThemeDark'
 
         return (
           <div className={`header_container ${headerThemeClass}`}>

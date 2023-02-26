@@ -1,0 +1,24 @@
+@media screen and (min-width: 767px) {
+  body {
+    height: 100vh;
+  }
+
+  .home_container {
+    overflow-y: auto;
+    margin-left: 20%;
+    padding: 20px;
+    font-family: Roboto;
+    position: absolute;
+    top: 100px;
+    left: 30px;
+    z-index: -30;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .home_container {
+    overflow-y: auto;
+    width: 100%;
+    padding: 20px;
+  }
+}
