@@ -1,24 +1,270 @@
+.homeLight {
+  background-color: #fff;
+}
+
+.homeDark {
+  background-color: #181818;
+}
+
+.banner_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  background-size: cover;
+  padding: 30px 50px;
+  width: 100%;
+}
+
+.banner_text {
+  width: 70%;
+}
+
+.searchLight {
+  border: 1px solid #dbdbdb;
+}
+
+.searchDark {
+  border: 1px solid #909090;
+}
+
+.searchButtonLight {
+  color: #989898;
+  background: #dbdbdb;
+}
+
+.searchButtonDark {
+  background-color: #231f20;
+  color: #64748b;
+}
+
+.searchBoxLight {
+  color: #000;
+}
+
+.searchBoxDark {
+  color: #fff;
+}
+
+.failureLight {
+  color: #1e293b;
+}
+
+.failureDark {
+  color: #fff;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (min-width: 767px) {
   body {
     height: 100vh;
   }
 
   .home_container {
-    overflow-y: auto;
+    overflow-y: scroll;
     margin-left: 20%;
-    padding: 20px;
     font-family: Roboto;
     position: absolute;
-    top: 100px;
-    left: 30px;
-    z-index: -30;
+    top: 80px;
+    left: 50px;
+    height: 100%;
+    width: 80%;
+    padding-top: 10px;
+  }
+
+  .prepaidHeading {
+    font-size: 30px;
+    color: #475569;
+    width: 60%;
+  }
+
+  .getNow {
+    background-color: transparent;
+    height: 36px;
+    width: 120px;
+    font-weight: 600;
+    border-radius: 2px;
+  }
+
+  .close_button {
+    background-color: transparent;
+    border-style: none;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  .search_div {
+    width: 40%;
+    height: 34px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+  }
+  .searchBar {
+    width: 90%;
+    background-color: transparent;
+    border-style: none;
+    outline: none;
+    padding: 5px;
+    font-family: Roboto;
+  }
+  .searchButton {
+    border-radius: 0px 2px 2px 0px;
+    border-style: none;
+    width: 34px;
+    cursor: pointer;
+  }
+
+  .failure_view_container,
+  .no_search_found {
+    text-align: center;
+    font-family: Roboto;
+  }
+  .failure_img {
+    height: 400px;
+    width: 50%;
+    margin-top: 20px;
+  }
+  .failure_heading {
+    font-size: 30px;
+    font-weight: 500;
+  }
+  .failure_para {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .failure-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 24px;
+    gap: 8px;
+    width: 120px;
+    height: 32px;
+    background: #4094ef;
+    border-radius: 4px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    border-style: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    margin: auto;
+  }
+
+  .videos_container {
+    padding-left: 0;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 767px) {
   .home_container {
-    overflow-y: auto;
     width: 100%;
-    padding: 20px;
+    height: 100%;
+    padding-top: 10px;
+  }
+
+  .prepaidHeading {
+    font-size: 20px;
+    font-family: Roboto;
+    color: #475569;
+    width: 80%;
+  }
+
+  .getNow {
+    background-color: transparent;
+    height: 36px;
+    width: 120px;
+    font-weight: 600;
+    border-radius: 2px;
+    color: inherit;
+  }
+
+  .close_button {
+    background-color: transparent;
+    border-style: none;
+    font-size: 25px;
+  }
+
+  .search_div {
+    width: 60%;
+    height: 34px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+  }
+  .searchBar {
+    width: 90%;
+    background-color: transparent;
+    border-style: none;
+    outline: none;
+    padding: 5px;
+    font-family: Roboto;
+  }
+  .searchButton {
+    border-radius: 0px 2px 2px 0px;
+    border-style: none;
+    width: 34px;
+    cursor: pointer;
+  }
+
+  .failure_view_container,
+  .no_search_found {
+    text-align: center;
+    font-family: Roboto;
+  }
+  .failure_img {
+    height: 300px;
+    width: 50%;
+    margin-top: 20px;
+  }
+  .failure_heading {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .failure_para {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    line-height: 30px;
+  }
+
+  .failure-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 24px;
+    gap: 8px;
+    width: 120px;
+    height: 32px;
+    background: #4094ef;
+    border-radius: 4px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    border-style: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    margin: auto;
+  }
+
+  .videos_container {
+    padding-left: 0;
   }
 }

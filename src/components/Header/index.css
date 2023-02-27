@@ -77,14 +77,24 @@
   font-weight: 500;
 }
 
-.header_container {
-  position: fixed;
-  width: 100%;
-}
-
 @media screen and (min-width: 767px) {
   .mobile_container {
     display: none;
+  }
+
+  .header_container {
+    position: fixed;
+    width: 100%;
+  }
+
+  .desktop-menu {
+    position: fixed;
+    width: 25%;
+    height: 100%;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .menu_bar {
@@ -111,6 +121,7 @@
   .hamburgerIcon {
     background-color: transparent;
     border-style: none;
+    cursor: pointer;
   }
 
   .icons {
@@ -133,13 +144,6 @@
     font-family: Roboto;
   }
 
-  .desktop-menu {
-    position: fixed;
-    margin-top: 80px;
-    width: 25%;
-    height: 100vh;
-  }
-
   .menu_bar {
     list-style: none;
     padding-left: 0;
@@ -156,8 +160,8 @@
   }
 
   .icons {
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
   }
 
   .active-link {
@@ -190,6 +194,7 @@
     justify-content: space-between;
     padding: 20px 20px 10px 20px;
     align-items: center;
+    width: 100%;
   }
   .desktop_container {
     display: none;
@@ -216,6 +221,7 @@
     border-style: none;
     height: 40px;
     width: 40px;
+    cursor: pointer;
   }
 
   .menu_bar {

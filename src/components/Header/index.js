@@ -33,26 +33,22 @@ const Header = props => {
         const headerThemeClass = isLight ? 'headerLight' : 'headerDark'
         const linksThemeClass = isLight ? 'linksLight' : 'linksDark'
         const logoutThemeClass = isLight ? 'logoutLight' : 'logoutDark'
-        const DesktoplinksThemeClass = isLight
-          ? 'desktopThemeLight'
-          : 'desktopThemeDark'
 
         return (
           <div className={`header_container ${headerThemeClass}`}>
             <div className="mobile_container">
               <img className="logoImg" src={logoUrl} alt="logoImg" />
               <div className="links_mobile_bar">
-                <button className="hamburgerIcon" type="button">
+                <button
+                  data-testid="theme"
+                  className="hamburgerIcon"
+                  type="button"
+                  onClick={changeTheme}
+                >
                   {isLight ? (
-                    <FaMoon
-                      className={`${headerThemeClass} icons`}
-                      onClick={changeTheme}
-                    />
+                    <FaMoon className={`${headerThemeClass} icons`} />
                   ) : (
-                    <BiSun
-                      className={`${headerThemeClass} icons`}
-                      onClick={changeTheme}
-                    />
+                    <BiSun className={`${headerThemeClass} icons`} />
                   )}
                 </button>
                 <button
@@ -174,6 +170,7 @@ const Header = props => {
 
               <div className="links_mobile_bar">
                 <button
+                  data-testid="theme"
                   onClick={changeTheme}
                   className="hamburgerIcon"
                   type="button"

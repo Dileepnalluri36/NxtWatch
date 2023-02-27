@@ -18,6 +18,10 @@ const DesktopMenuBar = () => {
           ? 'desktopThemeLight'
           : 'desktopThemeDark'
 
+        const desktopMenuStyles = isLight
+          ? 'desktopMenuLight'
+          : 'desktopMenuDark'
+
         return (
           <div className={`desktop-menu ${DesktoplinksThemeClass}`}>
             <ul className="menu_bar">
@@ -86,6 +90,27 @@ const DesktopMenuBar = () => {
                 </li>
               </Link>
             </ul>
+
+            <div className={`contacts_div ${desktopMenuStyles}`}>
+              <h1 className="contactUs">CONTACT US</h1>
+              <div className="logo_div">
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
+                  alt="facebook logo"
+                />
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+                  alt="twitter logo"
+                />
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
+                  alt="linked in logo"
+                />
+              </div>
+              <p className="tagline">
+                Enjoy! Now to see your channels and recommendations!
+              </p>
+            </div>
           </div>
         )
       }}

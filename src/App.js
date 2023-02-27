@@ -28,6 +28,11 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" component={LoginForm} />
           <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute
+            exact
+            path="/videos/:id"
+            component={VideoItemDetails}
+          />
           <Route exact path="/not-found" component={NotFound} />
           <Redirect to="/not-found" />
         </Switch>
