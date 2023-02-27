@@ -99,7 +99,21 @@ class VideoItemDetails extends Component {
     this.setState(prevState => ({isLike: !prevState.isLike}))
   }
 
-  render() {
+  renderVideoItem = isLight => {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiStatusConstants.inProgress:
+        return this.renderLoadingView()
+      case apiStatusConstants.failure:
+        return this.renderFailureView(isLight)
+      case apiStatusConstants.success:
+        return this.renderSuccessView(isLight)
+      default:
+        return null
+    }
+  }
+
+  renderSuccessView = isLight => {
     const {videoData} = this.state
     const {
       channelName,
@@ -111,8 +125,11 @@ class VideoItemDetails extends Component {
       publishedAt,
       channelProfileImageUrl,
     } = videoData
-
-    const date = new Date('Apr 19, 2019')
+    const {isLike} = this.state
+    const titleStyles = isLight ? 'titleLight' : 'titleDark'
+    const channelNameStyles = isLight ? 'channelLight' : 'channelDark'
+    const hrStyles = isLight ? 'hrLight' : 'hrDark'
+    const date = new Date(publishedAt)
     const formattedDate = date
       .toLocaleDateString('en-US', {
         year: 'numeric',
@@ -133,58 +150,92 @@ class VideoItemDetails extends Component {
     return (
       <ThemeContext.Consumer>
         {value => {
+          const {updateSavedVideo} = value
+
+          const saveVideo = () => {
+            updateSavedVideo(videoData)
+          }
+          return (
+            <VideoItemDetailsContainer
+              isLight={isLight}
+              className="videoPlayer"
+            >
+              <ReactPlayer
+                light={thumbnailUrl}
+                width="100%"
+                controls
+                url={videoUrl}
+              />
+              <p className={`videoTitle ${titleStyles}`}>{title}</p>
+              <div className="details_container">
+                <div>
+                  <p className="channelName">{channelName}</p>
+                  <p className="views">
+                    {viewCount} Views <strong>.</strong> {finalDate}
+                  </p>
+                </div>
+
+                <div className="buttons_div">
+                  <button
+                    onClick={this.likeButton}
+                    type="button"
+                    className="button"
+                  >
+                    <BiLike className={`buttonIcons ${isLike && 'active'}`} />
+                    <p className={`${isLike && 'active'}`}>Like</p>
+                  </button>
+                  <button
+                    type="button"
+                    className="button"
+                    onClick={this.likeButton}
+                  >
+                    <BiDislike
+                      className={`buttonIcons ${!isLike && 'active'}`}
+                    />
+                    <p className={`${!isLike && 'active'}`}>Dislike</p>
+                  </button>
+                  <button
+                    onClick={saveVideo}
+                    type="button"
+                    className={`button `}
+                  >
+                    <BiListPlus className="buttonIcons" /> Save
+                  </button>
+                </div>
+              </div>
+              <hr className={hrStyles} />
+              <div className="sub_div">
+                <img
+                  src={channelProfileImageUrl}
+                  className="channelImg"
+                  alt="thumbnail"
+                />
+                <div className="video_text_details">
+                  <p className={`title ${channelNameStyles}`}>{channelName}</p>
+                  <p className="channelName">{viewCount} subscribers</p>
+                  <p className={`description ${channelNameStyles}`}>
+                    {description}
+                  </p>
+                </div>
+              </div>
+            </VideoItemDetailsContainer>
+          )
+        }}
+      </ThemeContext.Consumer>
+    )
+  }
+
+  render() {
+    return (
+      <ThemeContext.Consumer>
+        {value => {
           const {isLight} = value
-          const {isLike} = this.state
-          const titleStyles = isLight ? 'titleLight' : 'titleDark'
-          const buttonStyles = isLight ? 'buttonLight' : 'buttonDark'
+
           return (
             <>
               <Header />
               <DesktopMenuBar />
-              <VideoItemDetailsContainer
-                isLight={isLight}
-                className="videoPlayer"
-              >
-                <ReactPlayer
-                  light={thumbnailUrl}
-                  width="100%"
-                  controls
-                  url={videoUrl}
-                />
-                <p className={`videoTitle ${titleStyles}`}>{title}</p>
-                <div className="details_container">
-                  <div>
-                    <p className="channelName">{channelName}</p>
-                    <p className="views">
-                      {viewCount} Views <strong>.</strong> {finalDate}
-                    </p>
-                  </div>
-
-                  <div className="buttons_div">
-                    <button
-                      onClick={this.likeButton}
-                      type="button"
-                      className="button"
-                    >
-                      <BiLike className={`buttonIcons ${isLike && 'active'}`} />
-                      <p className={`${isLike && 'active'}`}>Like</p>
-                    </button>
-                    <button
-                      type="button"
-                      className="button"
-                      onClick={this.likeButton}
-                    >
-                      <BiDislike
-                        className={`buttonIcons ${!isLike && 'active'}`}
-                      />
-                      <p className={`${!isLike && 'active'}`}>Dislike</p>
-                    </button>
-                    <button type="button" className={`button `}>
-                      <BiListPlus className="buttonIcons" /> Save
-                    </button>
-                  </div>
-                </div>
-              </VideoItemDetailsContainer>
+              {this.renderVideoItem(isLight)}
             </>
           )
         }}

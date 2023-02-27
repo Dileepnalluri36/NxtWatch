@@ -11,10 +11,27 @@ import ThemeContext from './components/context/ThemeContext'
 
 // Replace your code here
 class App extends Component {
-  state = {isLight: true}
+  state = {isLight: true, savedVideo: []}
 
   changeTheme = () => {
     this.setState(prevState => ({isLight: !prevState.isLight}))
+  }
+
+  updateSavedVideo = videoData => {
+    const {savedVideo} = this.state
+    console.log(videoData, savedVideo)
+    const idExists = savedVideo.map(obj => obj.id).includes(videoData.id)
+
+    if (!idExists) {
+      this.setState(prevState => ({
+        savedVideo: [...prevState.savedVideo, videoData],
+      }))
+    } else {
+      const updatedData = savedVideo.filter(
+        eachVideo => eachVideo.id !== videoData.id,
+      )
+      this.setState({savedVideo: updatedData})
+    }
   }
 
   render() {
@@ -24,6 +41,7 @@ class App extends Component {
         value={{
           isLight,
           changeTheme: this.changeTheme,
+          updateSavedVideo: this.updateSavedVideo,
         }}
       >
         <Switch>
