@@ -1,0 +1,101 @@
+.titleDark {
+  color: #f8fafc;
+}
+
+.titleLight {
+  color: #475569;
+}
+
+.active {
+  color: #4f46e5;
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    font-family: Roboto;
+  }
+  .videoPlayer {
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  .videoTitle {
+    margin: 10px;
+    font-weight: 500;
+  }
+
+  .details_container {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttons_div {
+    display: flex;
+    margin-right: 10px;
+    gap: 20px;
+  }
+
+  .button {
+    background-color: transparent;
+    border-style: none;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-family: Roboto;
+    cursor: pointer;
+    font-size: 15px;
+    color: #616e7c;
+  }
+
+  .buttonIcons {
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .videoPlayer {
+    margin-left: 16%;
+    font-family: Roboto;
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    padding-top: 20px;
+    width: 80%;
+  }
+  .videoTitle {
+    margin: 10px;
+    font-weight: 500;
+  }
+  .details_container {
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .buttons_div {
+    display: flex;
+    margin-right: 10px;
+    gap: 20px;
+  }
+
+  .button {
+    background-color: transparent;
+    border-style: none;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: Roboto;
+    font-size: 15px;
+    color: #616e7c;
+  }
+
+  .buttonIcons {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+  }
+}

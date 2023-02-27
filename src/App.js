@@ -6,6 +6,7 @@ import Home from './components/Home'
 import ProtectedRoute from './components/ProtectedRoute'
 import NotFound from './components/NotFound'
 import './App.css'
+import VideoItemDetails from './components/VideoItemDetails'
 import ThemeContext from './components/context/ThemeContext'
 
 // Replace your code here
