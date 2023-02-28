@@ -24,7 +24,6 @@ class VideoItemDetails extends Component {
     videoData: [],
     isLike: false,
     isDislike: false,
-    isSaved: false,
   }
 
   componentDidMount() {
@@ -137,6 +136,7 @@ class VideoItemDetails extends Component {
   renderSuccessView = isLight => {
     const {videoData} = this.state
     const {
+      id,
       channelName,
       videoUrl,
       description,
@@ -175,14 +175,11 @@ class VideoItemDetails extends Component {
 
           const saveVideo = () => {
             updateSavedVideo(videoData)
-            this.setState(prevState => ({isSaved: !prevState.isSaved}))
           }
-          const {isSaved} = this.state
+          const idExists = savedVideo.map(obj => obj.id).includes(id)
 
-          console.log(savedVideo)
-
-          const savedStyles = isSaved ? 'active' : ''
-          const savedText = isSaved ? 'Saved' : 'Save'
+          const savedStyles = idExists ? 'active' : ''
+          const savedText = idExists ? 'Saved' : 'Save'
           return (
             <VideoItemDetailsContainer
               isLight={isLight}
