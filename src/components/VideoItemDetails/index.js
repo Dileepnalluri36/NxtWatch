@@ -22,7 +22,8 @@ class VideoItemDetails extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
     videoData: [],
-    isLike: true,
+    isLike: false,
+    isDislike: false,
     isSaved: false,
   }
 
@@ -102,7 +103,21 @@ class VideoItemDetails extends Component {
   }
 
   likeButton = () => {
-    this.setState(prevState => ({isLike: !prevState.isLike}))
+    const {isDislike} = this.state
+    if (isDislike) {
+      this.setState({isLike: true, isDislike: false})
+    } else {
+      this.setState(prevState => ({isLike: !prevState.isLike}))
+    }
+  }
+
+  dislikeButton = () => {
+    const {isLike} = this.state
+    if (isLike) {
+      this.setState({isDislike: true, isLike: false})
+    } else {
+      this.setState(prevState => ({isDislike: !prevState.isDislike}))
+    }
   }
 
   renderVideoItem = isLight => {
@@ -132,7 +147,7 @@ class VideoItemDetails extends Component {
       channelProfileImageUrl,
       subscriberCount,
     } = videoData
-    const {isLike} = this.state
+    const {isLike, isDislike} = this.state
     const titleStyles = isLight ? 'titleLight' : 'titleDark'
     const channelNameStyles = isLight ? 'channelLight' : 'channelDark'
     const hrStyles = isLight ? 'hrLight' : 'hrDark'
@@ -200,12 +215,12 @@ class VideoItemDetails extends Component {
                   <button
                     type="button"
                     className="button"
-                    onClick={this.likeButton}
+                    onClick={this.dislikeButton}
                   >
                     <BiDislike
-                      className={`buttonIcons ${!isLike && 'active'}`}
+                      className={`buttonIcons ${isDislike && 'active'}`}
                     />
-                    <p className={`${!isLike && 'active'}`}>Dislike</p>
+                    <p className={`${isDislike && 'active'}`}>Dislike</p>
                   </button>
                   <button onClick={saveVideo} type="button" className="button">
                     <BiListPlus className={`buttonIcons ${savedStyles}`} />
