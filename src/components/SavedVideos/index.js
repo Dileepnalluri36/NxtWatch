@@ -1,18 +1,19 @@
 import './index.css'
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {BiListPlus} from 'react-icons/bi'
 import Loader from 'react-loader-spinner'
-import {SiYoutubegaming} from 'react-icons/si'
 import ThemeContext from '../context/ThemeContext'
 import Header from '../Header'
 import {
-  GamingContainer,
+  TrendingContainer,
   TrendingHeader,
   TrendingIconDiv,
   TrendingHeading,
+  NoSavedPara,
 } from './styledComponents'
 import DesktopMenuBar from '../DesktopMenuBar'
-import GamingItem from '../GamingItem'
+import TrendingItem from '../TrendingItem'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -21,7 +22,7 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
-class Gaming extends Component {
+class SavedVideos extends Component {
   state = {
     searchText: '',
     apiStatus: apiStatusConstants.initial,
@@ -29,13 +30,13 @@ class Gaming extends Component {
   }
 
   componentDidMount() {
-    this.getGamingVideos()
+    this.getTrendingPosts()
   }
 
-  getGamingVideos = async () => {
+  getTrendingPosts = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = `https://apis.ccbp.in/videos/gaming`
+    const apiUrl = `https://apis.ccbp.in/videos/trending`
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -47,6 +48,9 @@ class Gaming extends Component {
     if (response.ok === true) {
       const updatedData = data.videos.map(eachVideo => ({
         id: eachVideo.id,
+        channelName: eachVideo.channel.name,
+        channelProfileImageUrl: eachVideo.channel.profile_image_url,
+        publishedAt: eachVideo.published_at,
         thumbNailUrl: eachVideo.thumbnail_url,
         title: eachVideo.title,
         viewCount: eachVideo.view_count,
@@ -77,7 +81,7 @@ class Gaming extends Component {
     return (
       <div className={`failure_view_container ${failuretextColor}`}>
         <img className="failure_img" src={failureImgUrl} alt="failure view" />
-        <h1 className="failure_heading">Oops! Something went wrong</h1>
+        <p className="failure_heading">Oops! Something went wrong</p>
         <p className="failure_para">
           We are having some trouble to complete your request.Please try again.
         </p>
@@ -95,25 +99,49 @@ class Gaming extends Component {
   renderSuccessView = isLight => {
     const {videosData} = this.state
     return (
-      <>
-        <TrendingHeader isLight={isLight} className="trending_header">
-          <TrendingIconDiv isLight={isLight} className="trending_icon">
-            <SiYoutubegaming className="header_icons" />
-          </TrendingIconDiv>
-          <TrendingHeading isLight={isLight} className="heading">
-            Gaming
-          </TrendingHeading>
-        </TrendingHeader>
-        <ul className="gaming_videos_container">
-          {videosData.map(eachVideo => (
-            <GamingItem eachVideo={eachVideo} key={eachVideo.id} />
-          ))}
-        </ul>
-      </>
+      <ThemeContext.Consumer>
+        {value => {
+          const {savedVideo} = value
+          console.log(savedVideo)
+          return (
+            <div>
+              <TrendingHeader isLight={isLight} className="trending_header">
+                <TrendingIconDiv isLight={isLight} className="trending_icon">
+                  <BiListPlus className="header_icons" />
+                </TrendingIconDiv>
+                <TrendingHeading isLight={isLight} className="heading">
+                  Saved Videos
+                </TrendingHeading>
+              </TrendingHeader>
+              {savedVideo.length === 0 ? (
+                <div className="no_saved_videos_container">
+                  <img
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png"
+                    alt="no saved videos"
+                    className="no_saved_videos_img"
+                  />
+                  <TrendingHeading isLight={isLight} className="heading">
+                    No saved videos found
+                  </TrendingHeading>
+                  <NoSavedPara isLight={isLight}>
+                    Save your videos by clicking a button
+                  </NoSavedPara>
+                </div>
+              ) : (
+                <ul className="trending_videos_container">
+                  {savedVideo.map(eachVideo => (
+                    <TrendingItem eachVideo={eachVideo} key={eachVideo.id} />
+                  ))}
+                </ul>
+              )}
+            </div>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 
-  renderGamingVideos = isLight => {
+  renderTrendingVideos = isLight => {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.inProgress:
@@ -138,8 +166,8 @@ class Gaming extends Component {
               <div className="home_main_container">
                 <DesktopMenuBar />
 
-                <GamingContainer
-                  data-testid="gaming"
+                <TrendingContainer
+                  data-testid="savedVideos"
                   className="trending_container"
                   isLight={isLight}
                 >
@@ -169,8 +197,8 @@ class Gaming extends Component {
                       </div>
                     )} */}
 
-                  {this.renderGamingVideos(isLight)}
-                </GamingContainer>
+                  {this.renderTrendingVideos(isLight)}
+                </TrendingContainer>
               </div>
             </>
           )
@@ -180,4 +208,4 @@ class Gaming extends Component {
   }
 }
 
-export default Gaming
+export default SavedVideos

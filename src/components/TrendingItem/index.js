@@ -9,9 +9,8 @@ const TrendingItem = props => {
   const {
     id,
     channelName,
-    channelProfileImageUrl,
     publishedAt,
-    thumbNailUrl,
+    thumbnailUrl,
     viewCount,
     title,
   } = eachVideo
@@ -36,18 +35,21 @@ const TrendingItem = props => {
           <li className="trending_video_item_container">
             <Link to={`videos/${id}`} className="trending_link">
               <img
-                src={thumbNailUrl}
+                src={thumbnailUrl}
                 className="trending_thumbnail_img"
-                alt="thumbnail"
+                alt="video thumbnail"
               />
             </Link>
             <div className="trending_video_details_container">
               <div className="trending_video_text_details">
                 <p className={`trendingTitle ${titleStyles}`}>{title}</p>
                 <p className="channelName">{channelName}</p>
-                <p className="views">
-                  {viewCount} Views <strong>.</strong> {finalDate}
-                </p>
+                <div className="published">
+                  <p className="views">
+                    {viewCount} Views <strong>.</strong>
+                  </p>
+                  <p className="views">{finalDate}</p>
+                </div>
               </div>
             </div>
           </li>

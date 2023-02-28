@@ -13,7 +13,11 @@ const GamingItem = props => {
         return (
           <li className="gaming_item_container">
             <Link to={`videos/${id}`} className="trending_link">
-              <img src={thumbNailUrl} className="gamingImg" alt="gamingImage" />
+              <img
+                src={thumbNailUrl}
+                className="gamingImg"
+                alt="video thumbnail"
+              />
             </Link>
             <p className={`gamingTitle ${titleStyles}`}>{title}</p>
             <p className="gamingViews">{viewCount} Watching WorldWide</p>

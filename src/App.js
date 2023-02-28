@@ -10,6 +10,7 @@ import './App.css'
 import VideoItemDetails from './components/VideoItemDetails'
 import ThemeContext from './components/context/ThemeContext'
 import Gaming from './components/Gaming'
+import SavedVideos from './components/SavedVideos'
 
 // Replace your code here
 class App extends Component {
@@ -51,6 +52,7 @@ class App extends Component {
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/trending" component={Trending} />
           <ProtectedRoute exact path="/gaming" component={Gaming} />
+          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
           <ProtectedRoute
             exact
             path="/videos/:id"

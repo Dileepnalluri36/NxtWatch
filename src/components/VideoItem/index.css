@@ -52,3 +52,8 @@
     width: 100%;
   }
 }
+
+.published {
+  display: flex;
+  gap: 10px;
+}

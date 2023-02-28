@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
-export const GamingContainer = styled.div`
+export const TrendingContainer = styled.div`
   background-color: ${props => (props.isLight ? '#f9f9f9 ' : '#0f0f0f ')};
   padding-top: 0;
 `
 
 export const TrendingHeader = styled.div`
   background-color: ${props => (props.isLight ? '#d7dfe9 ' : '#231f20')};
-  padding: 40px;
+  padding: 20px;
   margin-left: 0;
 `
 
@@ -19,4 +19,9 @@ export const TrendingIconDiv = styled.div`
 
 export const TrendingHeading = styled.h1`
   color: ${props => (props.isLight ? '#00306e' : '#fff')};
+  font-size: 25px;
+`
+export const NoSavedPara = styled.p`
+  color: ${props => (props.isLight ? '#00306e' : '#fff')};
+  font-size: 16px;
 `

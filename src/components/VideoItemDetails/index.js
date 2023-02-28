@@ -51,6 +51,7 @@ class VideoItemDetails extends Component {
         id: data.video_details.id,
         channelName: data.video_details.channel.name,
         channelProfileImageUrl: data.video_details.channel.profile_image_url,
+        subscriberCount: data.video_details.channel.subscriber_count,
         publishedAt: data.video_details.published_at,
         title: data.video_details.title,
         viewCount: data.video_details.view_count,
@@ -129,6 +130,7 @@ class VideoItemDetails extends Component {
       title,
       publishedAt,
       channelProfileImageUrl,
+      subscriberCount,
     } = videoData
     const {isLike} = this.state
     const titleStyles = isLight ? 'titleLight' : 'titleDark'
@@ -182,7 +184,7 @@ class VideoItemDetails extends Component {
                 <div>
                   <p className="channelName">{channelName}</p>
                   <p className="views">
-                    {viewCount} Views <strong>.</strong> {finalDate}
+                    {viewCount} Views . {finalDate}
                   </p>
                 </div>
 
@@ -220,7 +222,7 @@ class VideoItemDetails extends Component {
                 />
                 <div className="video_text_details">
                   <p className={`title ${channelNameStyles}`}>{channelName}</p>
-                  <p className="channelName">{viewCount} subscribers</p>
+                  <p className="channelName">{subscriberCount} subscribers</p>
                   <p className={`description ${channelNameStyles}`}>
                     {description}
                   </p>

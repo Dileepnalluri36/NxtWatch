@@ -1,10 +1,16 @@
 import './index.css'
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {FaFire} from 'react-icons/fa'
 import Loader from 'react-loader-spinner'
 import ThemeContext from '../context/ThemeContext'
 import Header from '../Header'
-import {TrendingContainer} from './styledComponents'
+import {
+  TrendingContainer,
+  TrendingHeader,
+  TrendingIconDiv,
+  TrendingHeading,
+} from './styledComponents'
 import DesktopMenuBar from '../DesktopMenuBar'
 import TrendingItem from '../TrendingItem'
 
@@ -44,7 +50,7 @@ class Trending extends Component {
         channelName: eachVideo.channel.name,
         channelProfileImageUrl: eachVideo.channel.profile_image_url,
         publishedAt: eachVideo.published_at,
-        thumbNailUrl: eachVideo.thumbnail_url,
+        thumbnailUrl: eachVideo.thumbnail_url,
         title: eachVideo.title,
         viewCount: eachVideo.view_count,
       }))
@@ -74,7 +80,7 @@ class Trending extends Component {
     return (
       <div className={`failure_view_container ${failuretextColor}`}>
         <img className="failure_img" src={failureImgUrl} alt="failure view" />
-        <p className="failure_heading">Oops! Something went wrong</p>
+        <h1 className="failure_heading">Oops! Something went wrong</h1>
         <p className="failure_para">
           We are having some trouble to complete your request.Please try again.
         </p>
@@ -89,14 +95,24 @@ class Trending extends Component {
     )
   }
 
-  renderSuccessView = () => {
+  renderSuccessView = isLight => {
     const {videosData} = this.state
     return (
-      <ul className="trending_videos_container">
-        {videosData.map(eachVideo => (
-          <TrendingItem eachVideo={eachVideo} key={eachVideo.id} />
-        ))}
-      </ul>
+      <>
+        <TrendingHeader isLight={isLight} className="trending_header">
+          <TrendingIconDiv isLight={isLight} className="trending_icon">
+            <FaFire className="header_icons" />
+          </TrendingIconDiv>
+          <TrendingHeading isLight={isLight} className="heading">
+            Trending
+          </TrendingHeading>
+        </TrendingHeader>
+        <ul className="trending_videos_container">
+          {videosData.map(eachVideo => (
+            <TrendingItem eachVideo={eachVideo} key={eachVideo.id} />
+          ))}
+        </ul>
+      </>
     )
   }
 
@@ -119,7 +135,6 @@ class Trending extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {isLight} = value
-          const {closeButton} = this.state
           return (
             <>
               <Header />
@@ -127,7 +142,7 @@ class Trending extends Component {
                 <DesktopMenuBar />
 
                 <TrendingContainer
-                  data-testid="home"
+                  data-testid="trending"
                   className="trending_container"
                   isLight={isLight}
                 >

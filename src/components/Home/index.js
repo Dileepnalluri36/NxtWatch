@@ -88,7 +88,7 @@ class Home extends Component {
     return (
       <div className={`failure_view_container ${failuretextColor}`}>
         <img className="failure_img" src={failureImgUrl} alt="failure view" />
-        <p className="failure_heading">Oops! Something went wrong</p>
+        <h1 className="failure_heading">Oops! Something went wrong</h1>
         <p className="failure_para">
           We are having some trouble to complete your request.Please try again.
         </p>
@@ -127,7 +127,10 @@ class Home extends Component {
     const searchBoxStyles = isLight ? 'searchBoxLight' : 'searchBoxDark'
     return (
       <>
-        <div className={`search_div ${searchStyles}`}>
+        <div
+          data-testid="searchButton"
+          className={`search_div ${searchStyles}`}
+        >
           <input
             value={searchText}
             onChange={this.changeSearchText}
@@ -149,7 +152,7 @@ class Home extends Component {
             <img
               className="failure_img"
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png "
-              alt="failure view"
+              alt="no videos"
             />
             <p className="failure_heading">No Search Results Found</p>
             <p className="failure_para">
@@ -192,16 +195,14 @@ class Home extends Component {
                   isLight={isLight}
                 >
                   {!closeButton && (
-                    <div data-testid="banner" className="banner_div">
-                      <div className="banner_text">
+                    <div className="banner_div">
+                      <div data-testid="banner" className="banner_text">
                         <img
                           className="logoImg"
                           src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
                           alt="nxt watch logo"
                         />
-                        <h1 className="prepaidHeading">
-                          Buy Nxt Watch Prepaid Premium plans with UPI
-                        </h1>
+                        <p className="prepaidHeading">Buy Nxt Watch Premium</p>
                         <button className="getNow" type="button">
                           GET IT NOW
                         </button>

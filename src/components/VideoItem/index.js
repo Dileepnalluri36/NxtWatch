@@ -38,21 +38,24 @@ const VideoItem = props => {
               <img
                 src={thumbNailUrl}
                 className="thumbnail_img"
-                alt="thumbnail"
+                alt="video thumbnail"
               />
             </Link>
             <div className="video_details_container">
               <img
                 src={channelProfileImageUrl}
                 className="channelImage"
-                alt="channel image"
+                alt="channel logo"
               />
               <div className="video_text_details">
                 <p className={`title ${titleStyles}`}>{title}</p>
                 <p className="channelName">{channelName}</p>
-                <p className="views">
-                  {viewCount} Views <strong>.</strong> {finalDate}
-                </p>
+                <div className="published">
+                  <p className="views">
+                    {viewCount} Views <strong>.</strong>
+                  </p>
+                  <p className="views">{finalDate}</p>
+                </div>
               </div>
             </div>
           </li>

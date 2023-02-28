@@ -155,3 +155,16 @@
     padding-left: 0;
   }
 }
+
+.trending_header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-left: 35px;
+}
+
+.header_icons {
+  height: 30px;
+  width: 30px;
+  color: #ff0000;
+}

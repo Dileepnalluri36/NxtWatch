@@ -38,7 +38,7 @@ const Header = props => {
           <div className={`header_container ${headerThemeClass}`}>
             <div className="mobile_container">
               <Link to="/">
-                <img className="logoImg" src={logoUrl} alt="logoImg" />
+                <img className="logoImg" src={logoUrl} alt="website logo" />
               </Link>
               <div className="links_mobile_bar">
                 <button
@@ -73,7 +73,7 @@ const Header = props => {
                     {close => (
                       <>
                         <div>
-                          <p>Are you sure you want to logout ?</p>
+                          <p>Are you sure, you want to logout</p>
                         </div>
                         <div className="pop-up-button_div">
                           <button
@@ -89,7 +89,7 @@ const Header = props => {
                             className="logout-button"
                             onClick={onClickLogout}
                           >
-                            Logout
+                            Confirm
                           </button>
                         </div>
                       </>
@@ -107,7 +107,7 @@ const Header = props => {
                   }`}
                   onClick={() => setActiveMenu('Home')}
                 >
-                  <li>
+                  <li id="home">
                     <AiFillHome
                       className={`linkIcons ${
                         activeMenu === 'Home' ? 'active-link' : ''
@@ -123,7 +123,7 @@ const Header = props => {
                   }`}
                   onClick={() => setActiveMenu('Trending')}
                 >
-                  <li>
+                  <li id="trending">
                     <AiFillFire
                       className={`linkIcons ${
                         activeMenu === 'Trending' ? 'active-link' : ''
@@ -139,7 +139,7 @@ const Header = props => {
                   }`}
                   onClick={() => setActiveMenu('Gaming')}
                 >
-                  <li>
+                  <li id="gaming">
                     <SiYoutubegaming
                       className={`linkIcons ${
                         activeMenu === 'Gaming' ? 'active-link' : ''
@@ -149,13 +149,13 @@ const Header = props => {
                   </li>
                 </Link>
                 <Link
-                  to="/"
+                  to="/saved-videos"
                   className={`link_item ${
                     activeMenu === 'Saved' ? 'active-link' : ''
                   }`}
                   onClick={() => setActiveMenu('Saved')}
                 >
-                  <li>
+                  <li id="saved">
                     <BiListPlus
                       className={`linkIcons ${
                         activeMenu === 'Saved' ? 'active-link' : ''
@@ -207,7 +207,7 @@ const Header = props => {
                     {close => (
                       <>
                         <div>
-                          <p>Are you sure you want to logout ?</p>
+                          <p>Are you sure, you want to logout</p>
                         </div>
                         <div className="pop-up-button_div">
                           <button
@@ -223,7 +223,7 @@ const Header = props => {
                             className="logout-button"
                             onClick={onClickLogout}
                           >
-                            Logout
+                            Confirm
                           </button>
                         </div>
                       </>

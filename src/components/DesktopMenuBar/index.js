@@ -32,7 +32,7 @@ const DesktopMenuBar = () => {
                 }`}
                 onClick={() => setActiveMenu('Home')}
               >
-                <li>
+                <li id="home">
                   <AiFillHome
                     className={`linkIcons ${
                       activeMenu === 'Home' ? 'active-link' : ''
@@ -48,7 +48,7 @@ const DesktopMenuBar = () => {
                 }`}
                 onClick={() => setActiveMenu('Trending')}
               >
-                <li>
+                <li id="trending">
                   <AiFillFire
                     className={`linkIcons ${
                       activeMenu === 'Trending' ? 'active-link' : ''
@@ -64,7 +64,7 @@ const DesktopMenuBar = () => {
                 }`}
                 onClick={() => setActiveMenu('Gaming')}
               >
-                <li>
+                <li id="gaming">
                   <SiYoutubegaming
                     className={`linkIcons ${
                       activeMenu === 'Gaming' ? 'active-link' : ''
@@ -74,13 +74,13 @@ const DesktopMenuBar = () => {
                 </li>
               </Link>
               <Link
-                to="/"
+                to="/saved-videos"
                 className={`link_item ${
                   activeMenu === 'Saved' ? 'active-link' : ''
                 }`}
                 onClick={() => setActiveMenu('Saved')}
               >
-                <li>
+                <li id="save">
                   <BiListPlus
                     className={`linkIcons ${
                       activeMenu === 'Saved' ? 'active-link' : ''
@@ -92,7 +92,7 @@ const DesktopMenuBar = () => {
             </ul>
 
             <div className={`contacts_div ${desktopMenuStyles}`}>
-              <h1 className="contactUs">CONTACT US</h1>
+              <p className="contactUs">CONTACT US</p>
               <div className="logo_div">
                 <img
                   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
