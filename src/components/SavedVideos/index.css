@@ -190,3 +190,10 @@
   height: 450px;
   width: 450px;
 }
+
+@media screen and (max-width: 575px) {
+  .no_saved_videos_img {
+    height: 250px;
+    width: 250px;
+  }
+}
