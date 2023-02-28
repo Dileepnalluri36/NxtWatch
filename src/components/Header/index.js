@@ -14,7 +14,7 @@ import ThemeContext from '../context/ThemeContext'
 
 const Header = props => {
   const [isOpen, setHamburgerButton] = useState(false)
-  const [activeMenu, setActiveMenu] = useState('Home')
+  const [activeMenu, setActiveMenu] = useState('')
 
   const onClickLogout = () => {
     const {history} = props
@@ -37,7 +37,9 @@ const Header = props => {
         return (
           <div className={`header_container ${headerThemeClass}`}>
             <div className="mobile_container">
-              <img className="logoImg" src={logoUrl} alt="logoImg" />
+              <Link to="/">
+                <img className="logoImg" src={logoUrl} alt="logoImg" />
+              </Link>
               <div className="links_mobile_bar">
                 <button
                   data-testid="theme"
@@ -115,7 +117,7 @@ const Header = props => {
                   </li>
                 </Link>
                 <Link
-                  to="/"
+                  to="/trending"
                   className={`link_item ${
                     activeMenu === 'Trending' ? 'active-link' : ''
                   }`}
@@ -131,7 +133,7 @@ const Header = props => {
                   </li>
                 </Link>
                 <Link
-                  to="/"
+                  to="/gaming"
                   className={`link_item ${
                     activeMenu === 'Gaming' ? 'active-link' : ''
                   }`}
@@ -166,7 +168,9 @@ const Header = props => {
             )}
 
             <div className="desktop_container">
-              <img className="logoImg" src={logoUrl} alt="logoImg" />
+              <Link to="/">
+                <img className="logoImg" src={logoUrl} alt="logoImg" />
+              </Link>
 
               <div className="links_mobile_bar">
                 <button

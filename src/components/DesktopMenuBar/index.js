@@ -7,7 +7,7 @@ import {useState} from 'react'
 import ThemeContext from '../context/ThemeContext'
 
 const DesktopMenuBar = () => {
-  const [activeMenu, setActiveMenu] = useState('Home')
+  const [activeMenu, setActiveMenu] = useState('')
   return (
     <ThemeContext.Consumer>
       {value => {
@@ -42,7 +42,7 @@ const DesktopMenuBar = () => {
                 </li>
               </Link>
               <Link
-                to="/"
+                to="/trending"
                 className={`link_item ${
                   activeMenu === 'Trending' ? 'active-link' : ''
                 }`}
@@ -58,7 +58,7 @@ const DesktopMenuBar = () => {
                 </li>
               </Link>
               <Link
-                to="/"
+                to="/gaming"
                 className={`link_item ${
                   activeMenu === 'Gaming' ? 'active-link' : ''
                 }`}

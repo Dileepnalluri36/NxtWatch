@@ -1,0 +1,157 @@
+@media screen and (min-width: 767px) {
+  .trending_container {
+    overflow-y: scroll;
+    margin-left: 20%;
+    font-family: Roboto;
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    height: 100%;
+    width: 80%;
+    padding-top: 10px;
+  }
+
+  .prepaidHeading {
+    font-size: 30px;
+    color: #475569;
+    width: 60%;
+  }
+
+  .getNow {
+    background-color: transparent;
+    height: 36px;
+    width: 120px;
+    font-weight: 600;
+    border-radius: 2px;
+  }
+
+  .close_button {
+    background-color: transparent;
+    border-style: none;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  .failure_view_container {
+    text-align: center;
+    font-family: Roboto;
+  }
+  .failure_img {
+    height: 400px;
+    width: 50%;
+    margin-top: 20px;
+  }
+  .failure_heading {
+    font-size: 30px;
+    font-weight: 500;
+  }
+  .failure_para {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .failure-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 24px;
+    gap: 8px;
+    width: 120px;
+    height: 32px;
+    background: #4094ef;
+    border-radius: 4px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    border-style: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    margin: auto;
+  }
+
+  .trending_videos_container {
+    padding-left: 0;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .trending_container {
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+  }
+
+  .prepaidHeading {
+    font-size: 20px;
+    font-family: Roboto;
+    color: #475569;
+    width: 80%;
+  }
+
+  .getNow {
+    background-color: transparent;
+    height: 36px;
+    width: 120px;
+    font-weight: 600;
+    border-radius: 2px;
+    color: inherit;
+  }
+
+  .close_button {
+    background-color: transparent;
+    border-style: none;
+    font-size: 25px;
+  }
+
+  .failure_view_container {
+    text-align: center;
+    font-family: Roboto;
+  }
+  .failure_img {
+    height: 300px;
+    width: 50%;
+    margin-top: 20px;
+  }
+  .failure_heading {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .failure_para {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    line-height: 30px;
+  }
+
+  .failure-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 24px;
+    gap: 8px;
+    width: 120px;
+    height: 32px;
+    background: #4094ef;
+    border-radius: 4px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    border-style: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    margin: auto;
+  }
+
+  .trending_videos_container {
+    padding-left: 0;
+  }
+}

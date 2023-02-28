@@ -1,0 +1,64 @@
+.trending_video_details_container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+.channelImage {
+  height: 40px;
+  width: 40px;
+}
+.title {
+  margin-top: 0;
+}
+.titleDark {
+  color: #f8fafc;
+}
+
+.trendingtitleLight {
+  color: #00306e;
+}
+
+.channelName,
+.views {
+  color: #64748b;
+}
+
+.trending_thumbnail_img {
+  width: 100%;
+  height: 200px;
+}
+
+.trending_link {
+  text-decoration: none;
+  height: 150px;
+  width: 200px;
+}
+.trending_video_details_container {
+  margin-left: 20px;
+}
+
+@media screen and (min-width: 767px) {
+  .trending_video_item_container {
+    display: flex;
+    list-style: none;
+    font-family: Roboto;
+    gap: 30px;
+    margin: 50px;
+    width: 100%;
+  }
+
+  .trending_thumbnail_img,
+  .trending_link {
+    flex-basis: 60%;
+    max-width: 350px;
+  }
+  .trending_video_details_container {
+    max-width: 50%;
+  }
+
+  .trendingTitle {
+    font-size: 25px;
+    font-weight: bold;
+  }
+}

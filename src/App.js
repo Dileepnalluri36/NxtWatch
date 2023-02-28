@@ -3,11 +3,13 @@ import Cookies from 'js-cookie'
 import {Component} from 'react'
 import LoginForm from './components/LoginForm'
 import Home from './components/Home'
+import Trending from './components/Trending'
 import ProtectedRoute from './components/ProtectedRoute'
 import NotFound from './components/NotFound'
 import './App.css'
 import VideoItemDetails from './components/VideoItemDetails'
 import ThemeContext from './components/context/ThemeContext'
+import Gaming from './components/Gaming'
 
 // Replace your code here
 class App extends Component {
@@ -19,7 +21,6 @@ class App extends Component {
 
   updateSavedVideo = videoData => {
     const {savedVideo} = this.state
-    console.log(videoData, savedVideo)
     const idExists = savedVideo.map(obj => obj.id).includes(videoData.id)
 
     if (!idExists) {
@@ -35,18 +36,21 @@ class App extends Component {
   }
 
   render() {
-    const {isLight} = this.state
+    const {isLight, savedVideo} = this.state
     return (
       <ThemeContext.Provider
         value={{
           isLight,
           changeTheme: this.changeTheme,
           updateSavedVideo: this.updateSavedVideo,
+          savedVideo,
         }}
       >
         <Switch>
           <Route exact path="/login" component={LoginForm} />
           <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/trending" component={Trending} />
+          <ProtectedRoute exact path="/gaming" component={Gaming} />
           <ProtectedRoute
             exact
             path="/videos/:id"

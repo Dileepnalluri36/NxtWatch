@@ -19,7 +19,12 @@ const apiStatusConstants = {
 }
 
 class VideoItemDetails extends Component {
-  state = {apiStatus: apiStatusConstants.initial, videoData: [], isLike: true}
+  state = {
+    apiStatus: apiStatusConstants.initial,
+    videoData: [],
+    isLike: true,
+    isSaved: false,
+  }
 
   componentDidMount() {
     this.getVideoData()
@@ -137,7 +142,6 @@ class VideoItemDetails extends Component {
         day: '2-digit',
       })
       .replace(/\//g, '-')
-    console.log(formattedDate)
     const date1 = new Date(formattedDate)
 
     // Get the difference between the date and now
@@ -150,11 +154,18 @@ class VideoItemDetails extends Component {
     return (
       <ThemeContext.Consumer>
         {value => {
-          const {updateSavedVideo} = value
+          const {updateSavedVideo, savedVideo} = value
 
           const saveVideo = () => {
             updateSavedVideo(videoData)
+            this.setState(prevState => ({isSaved: !prevState.isSaved}))
           }
+          const {isSaved} = this.state
+
+          console.log(savedVideo)
+
+          const savedStyles = isSaved ? 'active' : ''
+          const savedText = isSaved ? 'Saved' : 'Save'
           return (
             <VideoItemDetailsContainer
               isLight={isLight}
@@ -194,12 +205,9 @@ class VideoItemDetails extends Component {
                     />
                     <p className={`${!isLike && 'active'}`}>Dislike</p>
                   </button>
-                  <button
-                    onClick={saveVideo}
-                    type="button"
-                    className={`button `}
-                  >
-                    <BiListPlus className="buttonIcons" /> Save
+                  <button onClick={saveVideo} type="button" className="button">
+                    <BiListPlus className={`buttonIcons ${savedStyles}`} />
+                    <p className={savedStyles}>{savedText}</p>
                   </button>
                 </div>
               </div>
