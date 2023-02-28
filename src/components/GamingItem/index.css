@@ -1,5 +1,5 @@
 .gaming_item_container {
-  width: 28%;
+  width: 30%;
   list-style: none;
   margin-left: 10px;
 }
@@ -16,6 +16,12 @@
     width: 100%;
     cursor: pointer;
   }
+
+  .gaming_item_container {
+    width: 25%;
+    list-style: none;
+    margin-left: 10px;
+  }
 }
 
 @media screen and (min-width: 767px) {
@@ -28,8 +34,7 @@
 
 @media screen and (max-width: 575px) {
   .gaming_item_container {
-    width: 45%;
+    width: 40%;
     list-style: none;
-    margin-left: 10px;
   }
 }
